@@ -1,0 +1,46 @@
+# File di compilazione
+*.class
+*.jar
+*.war
+*.ear
+
+# Directory di build generate automaticamente
+/build/
+/out/
+
+# File specifici dell'IDE
+/.idea/
+/*.iml
+.gradle/
+
+# File di log
+*.log
+
+# File di sistema
+.DS_Store
+Thumbs.db
+
+# File temporanei di Gradle
+.gradle/
+/.gradle/*
+
+# Cache di Gradle Wrapper
+.gradle/wrapper/dists/
+
+# Backup IntelliJ
+*.iws
+*.ipr
+
+# File temporanei
+*.tmp
+*.bak
+*.swp
+
+# File per debugging
+hs_err_pid*.log
+
+# File lock non necessari
+*.lock
+
+# Escludi configurazioni sensibili o locali
+local.properties
