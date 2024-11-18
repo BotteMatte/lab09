@@ -28,7 +28,7 @@ import java.util.Random;
 public class BadIOGUI {
 
     private static final String TITLE = "A very simple GUI application";
-    private static final String PATH = System.getProperty("user.home")
+    private static final String PATH = /*"D:\\informatica\\universita\\java"*/ System.getProperty("user.home")
             + File.separator
             + BadIOGUI.class.getSimpleName() + ".txt";
     private static final int PROPORTION = 5;
@@ -39,11 +39,19 @@ public class BadIOGUI {
      * Creates a new BadIOGUI.
      */
     public BadIOGUI() {
-        final JPanel canvas = new JPanel();
-        canvas.setLayout(new BorderLayout());
+        /*final JPanel canvas = new JPanel();
+        canvas.setLayout(new BorderLayout()); */
         final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
-        frame.setContentPane(canvas);
+       /* canvas.add(write, BorderLayout.CENTER);
+        frame.setContentPane(canvas);*/
+        //es 1.01
+        final JPanel canvas2 = new JPanel();
+        canvas2.setLayout(new BoxLayout(canvas2, BoxLayout.X_AXIS));
+        canvas2.add(write);
+        frame.setContentPane(canvas2);
+        //es 1.02
+        JButton write2 = new JButton("button 2");
+        canvas2.add(write2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
          * Handlers
@@ -66,6 +74,12 @@ public class BadIOGUI {
                 }
             }
         });
+
+        write2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("urlo del sium");
+            }
+        });
     }
 
     private void display() {
@@ -81,6 +95,7 @@ public class BadIOGUI {
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
         frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        frame.pack();
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
