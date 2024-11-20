@@ -1,9 +1,8 @@
 package it.unibo.mvc;
 
 
-import java.io.BufferedWriter;
+
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
@@ -25,12 +24,12 @@ public class Controller {
     }*/
 
 
-    public void setCurrentFile(File file) {
+    public void setCurrentFile(final File file) {
         final File parent = file.getParentFile();
-        if(parent.exists()){
+        if (parent.exists()){
             currentFile = file;
         } else {
-            throw new IllegalArgumentException("non puoi salvare su una cartella che non esiste")
+            throw new IllegalArgumentException("non puoi salvare su una cartella che non esiste");
         }
     }
 
