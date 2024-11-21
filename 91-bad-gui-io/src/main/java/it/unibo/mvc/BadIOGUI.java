@@ -28,7 +28,7 @@ import java.util.Random;
 public class BadIOGUI {
 
     private static final String TITLE = "A very simple GUI application";
-    private static final String PATH = /*"D:\\informatica\\universita\\java"*/ System.getProperty("user.home")
+    private static final String PATH = System.getProperty("user.home")
             + File.separator
             + BadIOGUI.class.getSimpleName() + ".txt";
     private static final int PROPORTION = 5;
@@ -50,8 +50,8 @@ public class BadIOGUI {
         canvas2.add(write);
         frame.setContentPane(canvas2);
         //es 1.02
-        JButton write2 = new JButton("button 2");
-        canvas2.add(write2);
+        JButton readButton = new JButton("button 2");
+        canvas2.add(readButton);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
          * Handlers
@@ -75,9 +75,16 @@ public class BadIOGUI {
             }
         });
 
-        write2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                System.out.println("urlo del sium");
+        readButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event){
+                try {
+                    final List<String> lines = Files.readAllLines(new File(PATH).toPath());
+                    for (String line : lines) {
+                        System.out.println(line);
+                    }
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(frame, e , "error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }
