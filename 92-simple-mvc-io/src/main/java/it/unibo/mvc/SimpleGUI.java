@@ -11,19 +11,19 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
  * A very simple program using a graphical interface.
  * 
  */
-public final class SimpleGUI {
+public class SimpleGUI {
 
-    private static final int PROPORTION = 5;
     private final JFrame frame = new JFrame("My first java graphical interface");
 
+    /**
+     * @param ctrl
+     */
     public SimpleGUI(final Controller ctrl) {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
@@ -38,20 +38,21 @@ public final class SimpleGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         saveButton.addActionListener(new ActionListener() {
-            public void actionPerformed(final ActionEvent event){
+            @Override
+            public void actionPerformed(final ActionEvent event) {
                 try {
                     ctrl.saveContentToFile(textArea.getText());
                 } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage(),"error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
 
         //frame size and location
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        final int sw = (int)screen.getWidth();
-        final int sh = (int)screen.getHeight();
-        frame.setSize( sw/2, sh/2);
+        final int sw = (int) screen.getWidth();
+        final int sh = (int) screen.getHeight();
+        frame.setSize(sw / 2, sh / 2);
         frame.setLocationByPlatform(true);
     }
 
@@ -59,7 +60,10 @@ public final class SimpleGUI {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    /**
+     * @param args
+     */
+    public static void main(final String[] args) {
         final SimpleGUI gui = new SimpleGUI(new Controller());
         gui.display();
     }

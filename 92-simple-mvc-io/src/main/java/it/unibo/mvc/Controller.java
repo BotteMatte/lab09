@@ -24,9 +24,12 @@ public class Controller {
     }*/
 
 
+    /**
+     * @param file
+     */
     public void setCurrentFile(final File file) {
         final File parent = file.getParentFile();
-        if (parent.exists()){
+        if (parent.exists()) {
             currentFile = file;
         } else {
             throw new IllegalArgumentException("non puoi salvare su una cartella che non esiste");
@@ -34,28 +37,35 @@ public class Controller {
     }
 
 
+    /**
+     * @return File
+     */
     public File getCurrentFile() {
         return currentFile;
     }
 
-
-    public String getPath(File file) {
+    /**
+     * @param file
+     * @return String
+     */
+    public String getPath(final File file) {
         return file.getAbsolutePath();
     }
 
 
-    public void saveContentToFile(String content) throws IOException {
+    /**
+     * @param content
+     * @throws IOException
+     */
+    public void saveContentToFile(final String content) throws IOException {
         if (currentFile == null) {
             throw new IllegalStateException("No current file set.");
         }
 
-
-        try (PrintStream ps = new PrintStream(currentFile , StandardCharsets.UTF_8)) {
+        try (PrintStream ps = new PrintStream(currentFile, StandardCharsets.UTF_8)) {
             ps.println(content);
         } catch (IOException e) {
             throw new IOException("Error wring on file: " + currentFile.getAbsolutePath(), e);
         }
-
-
     }
 }
