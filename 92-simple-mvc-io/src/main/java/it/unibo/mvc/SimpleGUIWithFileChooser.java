@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+
 import javax.swing.*;
 
 /**
@@ -39,8 +40,17 @@ public final class SimpleGUIWithFileChooser {
         panel1.add(saveButton, BorderLayout.SOUTH);
 
         //aggiungo text field per inserie il precorso e bottone per salvarlo
-        final JTextField filepath  = new JTextField(ctrl.getCurrentFile());
+        final JTextField filepath  = new JTextField();
         filepath.setEditable(false);
+
+        final JButton chooseFile = new JButton("Browse");
+        chooseFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                JFileChooser fc = new JFileChooser("scegli dove salvare");
+                fc.showSaveDialog(ctrl.getCurrentFile());
+            }
+        });
     }
 
 

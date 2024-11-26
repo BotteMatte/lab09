@@ -36,6 +36,10 @@ public class Controller {
         }
     }
 
+    public void setCurrentFile(final String file){
+        setCurrentFile(new File(file));
+    }
+
 
     /**
      * @return File
